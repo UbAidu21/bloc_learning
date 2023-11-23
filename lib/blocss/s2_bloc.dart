@@ -26,7 +26,7 @@ extension UrlString on PersonUrl {
   String get urlString {
     switch (this) {
       case PersonUrl.person1:
-        return 'https://webhook.site/fad8ba0f-1b92-4621-aac4-1a52ad1014aa';
+        return 'https://webhook.site/793b6a74-f276-4243-a70f-9f71c51e35b1';
       case PersonUrl.person2:
         return 'https://webhook.site/2e7cd2f6-aae6-49f2-b2ad-d0ea35f4432e';
     }
@@ -51,12 +51,27 @@ class Person {
   String toString() => 'Person (Name: $name ,Age: $age )';
 }
 
-Future<Iterable<Person>> getPerson(String url) => HttpClient()
-    .getUrl(Uri.parse(url))
-    .then((req) => req.close())
-    .then((resp) => resp.transform(utf8.decoder).join())
-    .then((str) => json.decode(str) as List<dynamic>)
-    .then((list) => list.map((e) => Person.fromJson(e)));
+HttpClient httpClient = HttpClient()
+  ..badCertificateCallback =
+      (X509Certificate cert, String host, int port) => true;
+
+Future<Iterable<Person>> getPerson(String url) async {
+  final response = await HttpClient().getUrl(Uri.parse(url));
+  final jsonString = await response
+      .close()
+      .then((resp) => resp.transform(utf8.decoder).join());
+  final List<dynamic> jsonList = json.decode(jsonString);
+  return jsonList.map((e) => Person.fromJson(e));
+}
+
+// {
+//   return httpClient
+//       .getUrl(Uri.parse(url))
+//       .then((req) => req.close())
+//       .then((resp) => resp.transform(utf8.decoder).join())
+//       .then((str) => json.decode(str) as List<dynamic>)
+//       .then((list) => list.map((e) => Person.fromJson(e)));
+// }
 
 @immutable
 class FetchResult {

@@ -1,4 +1,4 @@
-import 'package:bloc_learning/blocss/s2_bloc.dart';
+import 'package:bloc_learning/blocss/s3_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
         textTheme: const TextTheme(bodyMedium: TextStyle(fontSize: 20)),
       ),
       home: BlocProvider(
-        create: (_) => PersonBloc(),
-        child: const S2BlocScren(),
+        create: (_) => CounterBloc(),
+        child: CounterApp(),
       ),
     );
   }
