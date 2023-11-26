@@ -29,42 +29,52 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     /// 'emit': is the output of our on(){} method when the event is called or handle.
     /// if you check to the DataType of Event, it will give the Event name of the <T>.
     on<IncrementEvent>((event, emit) {
-      emit(CounterState(
-        count: state.count + 1,
-        backgroundColor: getRandomColor(),
-      ));
+      emit(
+        CounterState(
+          count: state.count + 1,
+          backgroundColor: getRandomColor(),
+        ),
+      );
     });
 
     on<DecrementEvent>((event, emit) {
       if (state.count > 0) {
-        emit(CounterState(
-          count: state.count - 1,
-          backgroundColor: getRandomColor(),
-        ));
+        emit(
+          CounterState(
+            count: state.count - 1,
+            backgroundColor: getRandomColor(),
+          ),
+        );
       }
     });
 
     on<Add5>((event, emit) {
-      emit(CounterState(
-        count: state.count + 5,
-        backgroundColor: getRandomColor(),
-      ));
+      emit(
+        CounterState(
+          count: state.count + 5,
+          backgroundColor: getRandomColor(),
+        ),
+      );
     });
 
     on<Subtract5>((event, emit) {
       if (state.count >= 5) {
-        emit(CounterState(
-          count: state.count - 5,
-          backgroundColor: getRandomColor(),
-        ));
+        emit(
+          CounterState(
+            count: state.count - 5,
+            backgroundColor: getRandomColor(),
+          ),
+        );
       }
     });
 
     on<ChangeColorEvent>((event, emit) {
-      emit(CounterState(
-        count: state.count,
-        backgroundColor: getRandomColor(),
-      ));
+      emit(
+        CounterState(
+          count: state.count,
+          backgroundColor: getRandomColor(),
+        ),
+      );
     });
   }
 }

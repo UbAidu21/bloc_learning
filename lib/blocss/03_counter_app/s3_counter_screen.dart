@@ -34,17 +34,22 @@ class CounterApp extends StatelessWidget {
               builder: (context, state) => Text(
                 '${state.count}',
                 style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: state.backgroundColor),
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: state.backgroundColor,
+                ),
               ),
             ),
             Text(
-              context.select((CounterBloc bloc) =>
-                  '${bloc.state.count} ${bloc.state.backgroundColor}'),
+              context.select(
+                (CounterBloc bloc) =>
+                    '${bloc.state.count} ${bloc.state.backgroundColor}',
+              ),
               style: TextStyle(
-                  color: context.select(
-                      (CounterBloc bloc) => bloc.state.backgroundColor)),
+                color: context.select(
+                  (CounterBloc bloc) => bloc.state.backgroundColor,
+                ),
+              ),
             ),
             const SizedBox(height: 20),
             Row(

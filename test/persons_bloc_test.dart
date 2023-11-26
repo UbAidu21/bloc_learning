@@ -75,7 +75,6 @@ void main() {
           ),
         ],
       );
-
       blocTest<PersonBloc, FetchResult?>(
         'Mock Retriveing Person2 rom Second Iterable',
         build: () => bloc,
