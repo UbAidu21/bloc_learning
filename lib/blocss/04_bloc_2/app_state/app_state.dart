@@ -1,6 +1,7 @@
 import 'package:bloc_learning/blocss/04_bloc_2/models.dart';
 import 'package:flutter/foundation.dart' show immutable;
-import 'package:collection/collection.dart';
+// ignore: depend_on_referenced_packages
+import 'package:collection/collection.dart' show DeepCollectionEquality;
 
 @immutable
 class AppState {
